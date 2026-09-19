@@ -1547,7 +1547,7 @@ MagickExport void *FileToBlob(const char *filename,const size_t extent,
             ResourceLimitError,"MemoryAllocationFailed","`%s'",filename);
           return(NULL);
         }
-      if (file == -1)
+      if ((file == -1) || (count < 0))
         {
           blob=(unsigned char *) RelinquishMagickMemory(blob);
           ThrowFileException(exception,BlobError,"UnableToReadBlob",filename);
